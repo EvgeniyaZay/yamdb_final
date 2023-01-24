@@ -2,19 +2,9 @@ import csv
 import logging
 
 from django.core.management import BaseCommand
-
-from reviews.models import (
-    Categories,
-    Comments,
-    Genres,
-    TitleGenre,
-    Review,
-    Title
-)
-
-from user.models import (
-    User
-)
+from reviews.models import (Categories, Comments, Genres, Review, Title,
+                            TitleGenre)
+from user.models import User
 
 ALREDY_LOADED_ERROR_MESSAGE = """
 If you need to reload the child data from the CSV file,

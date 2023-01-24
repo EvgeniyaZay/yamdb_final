@@ -1,6 +1,7 @@
 from enum import Enum
-from django.db import models
+
 from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.db import models
 
 
 class UserManager(BaseUserManager):
@@ -29,8 +30,8 @@ class UserRole(Enum):
 
     @staticmethod
     def get_max_lenght():
-        max_lenght = max(len(role.value) for role in UserRole)
-        return max_lenght
+        return max(len(role.value) for role in UserRole)
+        # return max_lenght
 
     @staticmethod
     def get_all_roles():
