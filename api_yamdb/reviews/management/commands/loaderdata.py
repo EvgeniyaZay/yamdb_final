@@ -2,7 +2,6 @@ import csv
 import logging
 
 from django.core.management import BaseCommand
-
 from reviews.models import (Categories, Comments, Genres, Review, Title,
                             TitleGenre)
 from user.models import User
