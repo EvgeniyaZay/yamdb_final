@@ -8,7 +8,8 @@ services:
     env_file:
       - ./.env
   web:
-    image: evgeniyazay/yamdb_final:latest
+    build: .
+    image: evgeniya-zay/yamdb_final:latest
 #    build: ../api_yamdb/
     restart: always
     volumes:
