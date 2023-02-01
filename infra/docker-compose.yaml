@@ -8,9 +8,9 @@ services:
     env_file:
       - ./.env
   web:
-    build:
-      context: ../api_yamdb
-      dockerfile: Dockerfile
+#    build:
+#      context: ../api_yamdb
+#      dockerfile: Dockerfile
     image: evgeniyazay/yamdb_final:latest
 #    build: ../api_yamdb/
     restart: always
