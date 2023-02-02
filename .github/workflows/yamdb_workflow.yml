@@ -1,10 +1,7 @@
 name: Yamdb_final workflow
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: [push]
+
 jobs:
   tests:
     runs-on: ubuntu-latest
