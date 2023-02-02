@@ -42,8 +42,9 @@ jobs:
         with:
           context: ./api_yamdb/
           push: true
-          tags: evgeniyazay/yamdb_final:lates
+          tags: ${{ secrets.DOCKER_USERNAME }}/yamdb_final:lates
           file: api_yamdb/Dockerfile
+#      - name:
 
 
   deploy:
