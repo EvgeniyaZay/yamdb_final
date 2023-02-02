@@ -6,16 +6,27 @@
 3. Автоматический деплой на боевой сервер,
 4. Отправка сообщения в телеграмм-бот в случае успеха.
 
-## Начало работы
-
-1. Клонируйте репозиторий на локальную машину.
+# Как запустить проект:
+### Клонировать репозиторий и перейти в него в командной строке
+```angular2html
+git clone 
 ```
-git clone <адрес репозитория>
+```angular2html
+cd api_yamdb
 ```
-2. Для работы с проектом локально - установите вирутальное окружение и восстановите зависимости.
+### Создать и активировать виртуальное окружение:
+```angular2html
+python3 -m venv venv
 ```
-python -m venv venv
-pip install -r requirements.txt 
+```angular2html
+source/bin/activate
+```
+### Установить зависимости из файла requiremens.txt:
+```angular2html
+python3 -m pip install --upgrade pip
+```
+```angular2html
+pip install -r requirements.txt
 ```
 
 ### Подготовка удаленного сервера для развертывания приложения
@@ -23,17 +34,39 @@ pip install -r requirements.txt
 Для работы с проектом на удаленном сервере должен быть установлен Docker и docker-compose.
 Эта команда скачает скрипт для установки докера:
 ```
-curl -fsSL https://get.docker.com -o get-docker.sh
+sudo apt install docker.io
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 ```
-Эта команда запустит его:
+Проверьте корректность установки Docker-compose:
 ```
-sh get-docker.sh
+sudo  docker-compose --version
 ```
-Установка docker-compose:
-```
-apt install docker-compose
-```
+
 ```angular2html
 https://github.com/github/docs/actions/workflows/yamdb_workflow.yml/badge.svg
+```
+### После успешного деплоя:
+Соберите статические файлы (статику):
+```
+docker-compose exec web python manage.py collectstatic --no-input
+```
+Примените миграции:
+```
+docker-compose exec web python manage.py makemigrations
+docker-compose exec web python manage.py migrate --noinput
+```
+Создайте суперпользователя:
+```
+docker-compose exec web python manage.py createsuperuser
 
 ```
+
+### Документация к API:
+```angular2html
+http://127.0.0.1:8000/redoc/
+```
+### Над проектом работали
+- Дементьев Александр
+- Зайцева Евгения
+- Денисов Максим
